@@ -2,6 +2,7 @@
      import Logo from '../assets/images/jordan-rhodes-logo.svg';
      import Nav from './nav.svelte';
      export let visible;
+     export let links;
 </script>
 
 <header>
@@ -11,7 +12,7 @@
                 <a href="/"><img class="logo" src={Logo} alt="JR"/></a>
             </div>
             <div class="right">
-                <Nav navType="main-navigation"/>
+                <Nav links={links}/>
             </div>
         </div>
     </div>

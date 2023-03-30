@@ -1,37 +1,31 @@
 <script>
+    // Library imports
+    import inView from '../utlis/helperFunctions';
+
+    // Components
     import Header from '../components/header.svelte';
     import Footer from '../components/footer.svelte';
     import Hero from '../components/hero.svelte';
     import Carousel from '../components/carousel.svelte';
     import ColumnSection from '../components/columnSection.svelte';
-    import inView from '../utlis/helperFunctions';
-    import api from '../lib/api';
-    import {onMount} from 'svelte';
 
-    const components = {Header, Hero, Carousel, ColumnSection}
+    //Import Component Data
+    import { referralColumnData, landingHeroData, caseStudyCarousel, logoColumnsData } from '../lib/mainPage';
+    import { mainNav } from '../lib/menus';
 
-    let error = null;
     let headerVisibility = "visible";
-    let pageData;
-    onMount(async () => {
-        try {
-            const resp = await api("pages", "populate=deep&filters[slug][$null]=true");
-            pageData = resp.data.data[0].attributes;
-        } catch (e) {
-            error = e;
-        }
-    });
+
+
 </script>
 
 <div class="app-wrapper">
-    <Header visible={headerVisibility}/>
-    {#if pageData}
-        {#each pageData.blocks as block}
-            <svelte:component this={components[block.blockType]} data={block}/>
-        {/each}
-    {/if}
+    <Header visible={headerVisibility} links={mainNav}/>
+    <Hero data={landingHeroData}/>
+    <ColumnSection data={referralColumnData} />
+    <Carousel data={caseStudyCarousel} />
+    <ColumnSection data={logoColumnsData} />
     <div use:inView on:enter={() => { headerVisibility = "hidden"; }} on:exit={() => headerVisibility = "visible"} class="pre-footer"><span></span></div>
-    <Footer />
+    <Footer links={mainNav} />
 </div>
 
 <style>

@@ -1,16 +1,5 @@
 <script>
-    import { onMount } from 'svelte';
-    import api from '../lib/api';
-    export let navType;
-    let links;
-    onMount( async () => {
-        try {
-            const resp = await api(navType, 'populate=*');
-            links = resp.data.data.attributes.items;
-        } catch (e) {
-            console.log("Error {}", e);
-        }
-    });
+    export let links;
 </script>
 
 <nav>
@@ -39,7 +28,7 @@
         text-decoration: none;
     }
 
-    .main {
+    .primary {
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;

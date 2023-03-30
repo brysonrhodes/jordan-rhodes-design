@@ -1,22 +1,11 @@
 <script>
-    import {onMount} from 'svelte';
-    import api from '../lib/api';
     import Referral from '../models/referral.svelte';
     import ClientIcon from '../models/clientIcon.svelte';
     import Button from './button.svelte';
     export let data;
+    const collectionData = data.collectionData;
 
     const models = {Referral, ClientIcon}
-
-    let collectionData;
-    onMount(async () => {
-        try {
-            const resp = await api(data.collectionType, 'populate=deep&pagination[limit]=' + data.numColumns);
-            collectionData = resp.data.data;
-        } catch (e) {
-            console.log("Error");
-        }
-    });
 </script>
 
 <div class="wrapper gutter {data.theme}">
@@ -26,12 +15,12 @@
     <div class="inner">
         {#if collectionData}
             {#each collectionData as item}
-                <svelte:component this={models[item.attributes.collectionType]} data={item.attributes} columns={data.numColumns}/>
+                <svelte:component this={models[item.type]} data={item.attributes} columns={data.numColumns}/>
             {/each}
         {/if}
     </div>
-    {#if data.button[0]}
-        <Button data={data.button[0]} />
+    {#if data.button}
+        <Button data={data.button.attributes} />
     {/if}
 </div>
 

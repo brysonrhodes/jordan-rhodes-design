@@ -1,13 +1,11 @@
 <script>
     import Button from "../components/button.svelte";
     export let data;
-    let image = data.logo.data.attributes.url;
-    let alt = data.logo.data.attributes.alternativeText;
 </script>
 
 <div class="wrapper">
     <div class="image-wrapper">
-        <img src="{import.meta.env.VITE_URL}{image}" alt="{alt}" />
+        <img src={data.image} alt={data.imageAlt} />
     </div>
     <div class="text">
         <h4>{data.company}</h4>
@@ -16,8 +14,8 @@
             <p>{work}</p>
         {/each}
     </div>
-    {#if data.button[0] }
-        <Button data={data.button[0]} />
+    {#if data.button }
+        <Button data={data.button.attributes} />
     {/if}
 </div>
 

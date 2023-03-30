@@ -2,14 +2,12 @@
     export let data;
     export let columns;
     let columnWidth = 100 / columns;
-    const image = data.photo.data.attributes.url;
-    const alt = data.photo.data.attributes.alternativeText;
 </script>
 
 <div class="wrapper" style="--column-width: {columnWidth}%">
-    <img src="{import.meta.env.VITE_URL}{image}" alt="{alt}"/>
+    <img src={data.image} alt="{data.imageAlt}"/>
     <div class="inner">
-        <p class="name">- {data.name} | {data.company}</p>
+        <p class="name">{data.name} | {data.company}</p>
         <p>{data.text}</p>
     </div>
 </div>

@@ -2,7 +2,12 @@
     export let data;
 </script>
 
-<a href={data.href}><button class={data.theme}>{data.text}</button></a>
+{#if data.theme !== 'comingSoon'}
+    <a href={data.href}><button class={data.theme}>{data.text}</button></a>
+{:else}
+    <button class={data.theme}>{data.text}</button>
+{/if}
+
 
 <style>
     button {
@@ -22,7 +27,13 @@
         background-color: #393939;
     }
 
-    .small {
+    .comingSoon {
+        color: #00FF9F;
+        background-color: #393939;
+        border-color: #393939;
+    }
+
+    .small, .comingSoon {
         width: 100%;
         margin-top: 57px;
         font-size: 18px;

@@ -2,32 +2,26 @@
     export let data;
     import Button from './button.svelte';
     import TextIcon from '../models/textIcon.svelte';
-    let backgroundImage = data.images.data[0].attributes;
-    let featureImage = data.images.data[1].attributes;
 </script>
 
 <div class="wrapper {data.theme}" id={data.blockId}>
-    <img class="background-image" src='{import.meta.env.VITE_URL}{backgroundImage.formats.medium.url}' alt={backgroundImage.alternativeText} />
+    <img class="background-image" src={data.backgroundImage} alt={data.backgroundImageAlt} />
     <div class="content">
         <div class="text">
             {#if data.theme == "primary"}
                 <h1>{data.heading}</h1>
             {:else}
-                {#if data.images.data[2].attributes.formats.small}
-                    <img src='{import.meta.env.VITE_URL}{data.images.data[2].attributes.formats.small.url}' alt={data.images.data[2].attributes.alternativeText} />
-                {:else}
-                    <img src='{import.meta.env.VITE_URL}{data.images.data[2].attributes.formats.thumbnail.url}' alt={data.images.data[2].attributes.alternativeText} />
-                {/if}
+                <img src={data.logoImage} alt={data.logoImageAlt} />
             {/if}
             <p>{data.text}</p>
             {#if data.text2} 
                 <p>{data.text2}</p>
             {/if}
             {#if data.ctaButton}
-                <Button data={data.ctaButton[0]}/>
+                <Button data={data.ctaButton.attributes}/>
             {/if}
         </div>
-        <img class="feature-image" src='{import.meta.env.VITE_URL}{featureImage.formats.small.url}' alt={featureImage.alternativeText} />
+        <img class="feature-image" src={data.featureImage} alt={data.featureImageAlt} />
     </div>
     {#if data.icons}
         <div class="icon-wrapper">
@@ -52,6 +46,7 @@
     .background-image {
         z-index: -1;
         width: 835px;
+        left: 0;
         position: absolute;
     }
 

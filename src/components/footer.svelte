@@ -1,23 +1,9 @@
 <script>
-    import {onMount} from 'svelte';
-    import api from '../lib/api';
     import Logo from '../assets/images/jordan-rhodes-logo.svg';
     import RedSands from '../assets/images/red-sands.svg';
     import Nav from '../components/nav.svelte';
-
-    let socials;
-    let links;
-
-    onMount(async () => {
-        try {
-            let resp = await api('socials', 'populate=*');
-            socials = resp?.data.data;
-            resp = await api('footer-navigation', 'populate=*');
-            links = resp?.data.attributes.items;
-        } catch (e) {
-            console.log("Error: " + e);
-        }
-    });
+    import socials from '../lib/socials';
+    export let links;
 </script>
 
 <footer class="gutter">
@@ -26,11 +12,11 @@
             <img id="logo" src={Logo} alt="Jordan Rhodes" />
             {#if socials}
                 {#each socials as item}
-                    <a href={item.attributes.href} target="_blank"><img class="icon" src='{import.meta.env.VITE_URL}{item.attributes.icon.data.attributes.url}' alt=''/></a>
+                    <a href={item.href} target="_blank"><img class="icon" src={item.image} alt={item.imageAlt}/></a>
                 {/each}
             {/if}
         </div>
-        <Nav navType="footer-navigation" />
+        <Nav links={links} />
     </div>
     <div class="bottom-wrapper">
         <p>Developed by Bryson Rhodes</p>

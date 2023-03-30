@@ -1,6 +1,4 @@
 <script>
-    import {onMount} from 'svelte';
-    import api from '../lib/api';
     import Referral from '../models/referral.svelte';
     import ClientIcon from '../models/clientIcon.svelte';
     import CaseStudy from '../models/caseStudy.svelte';
@@ -8,27 +6,19 @@
     export let data;
 
     const models = {Referral, ClientIcon, CaseStudy, Button}
-    let collectionData;
-    onMount(async () => {
-        try {
-            const resp = await api(data.collectionType, "populate=deep");
-            collectionData = resp.data.data;
-        } catch (e) {
-            console.log("Error");
-        }
-    });
+    const collectionData = data.collectionData;
 </script>
 
 <div class="outer gutter {data.theme}">
-    {#if data.background}
-        <img class="background" src="{import.meta.env.VITE_URL}{data.background.data.attributes.formats.medium.url}" alt="Background"/>
+    {#if data.backgroundImage}
+        <img class="background" src={data.backgroundImage} alt=""/>
     {/if}
     <h2>{data.heading}</h2>
     <div class="wrapper">
         <div class="inner">
             {#if collectionData}
                 {#each collectionData as item}
-                    <svelte:component this={models[item.attributes.collectionType]} data={item.attributes} />
+                    <svelte:component this={models[item.type]} data={item.attributes} />
                 {/each}
             {/if}
         </div>
@@ -58,9 +48,10 @@
     h2 {
         margin-bottom: 64px;
         text-align: left;
+        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;
-        font-size: 39.06;
+        font-size: 39.06px;
     }
 
     .secondary h2 {
