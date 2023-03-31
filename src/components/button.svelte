@@ -1,9 +1,17 @@
 <script>
     export let data;
+
+    let pageTarget;
+    if(data.isExternal === true) {
+        pageTarget = "blank";
+    } else {
+        pageTarget = "_self";
+    }
+
 </script>
 
 {#if data.theme !== 'comingSoon'}
-    <a href={data.href}><button class={data.theme}>{data.text}</button></a>
+    <a href={data.href} target={pageTarget}><button class={data.theme}>{data.text}</button></a>
 {:else}
     <button class={data.theme}>{data.text}</button>
 {/if}

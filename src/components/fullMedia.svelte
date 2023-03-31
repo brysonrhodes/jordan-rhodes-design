@@ -6,28 +6,22 @@
     {#if data.heading}
         <h2>{data.heading}</h2>
     {/if}
-    {#if data.media.data}
+    {#if data.media}
         <video width={"100%"} autoplay loop muted>
-            <source src='{import.meta.env.VITE_URL}{data.media.data.attributes.url}' type={data.media.data.attributes.mime}>
+            <source src={data.media.url} type={data.media.type}>
             <track kind="captions">
         </video>
     {/if}
     {#if data.iframe}
         <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" class="iframe" title={data.iframe.title} src="https://www.figma.com/embed?embed_host=share&url={data.iframe.url}" allowfullscreen></iframe>
     {/if}
-    {#if data.images.data }
+    {#if data.images }
         <div class="images">
-            {#each data.images.data as image}
-                {#if image.attributes.caption}
-                    <p>{image.attributes.caption}</p>
+            {#each data.images as image}
+                {#if image.caption}
+                    <p>{image.caption}</p>
                 {/if}
-                {#if image.attributes.formats.medium }
-                    <img src='{import.meta.env.VITE_URL}{image.attributes.formats.medium.url}' alt={image.attributes.alternativeText} />
-                {:else if image.attributes.formats.small }
-                    <img src='{import.meta.env.VITE_URL}{image.attributes.formats.small.url}' alt={image.attributes.alternativeText} />
-                {:else if image.attributes.formats.thumbnail }
-                    <img src='{import.meta.env.VITE_URL}{image.attributes.formats.thumbnail.url}' alt={image.attributes.alternativeText} />
-                {/if}
+                <img src={image.url} alt={image.altText} />
             {/each}
         </div>
     {/if}

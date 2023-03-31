@@ -16,6 +16,21 @@ import hollandAmericaLogo from '../assets/images/holland-america.svg';
 import beebrickLogo from '../assets/images/beebrick.svg';
 import treePeaceMonotone from '../assets/images/tree-peace-monotone.svg';
 
+// Tech Stack Icons
+import figma from '../assets/images/figma.svg';
+import adobeXd from '../assets/images/adobe-xd.svg';
+import userZoom from '../assets/images/user-zoom.svg';
+import teams from '../assets/images/teams.svg';
+import slack from '../assets/images/slack.svg';
+import wcag from '../assets/images/WCAG.svg';
+import prototype from '../assets/images/prototype.svg';
+import designSystem from '../assets/images/design.svg';
+import usabilityStudy from '../assets/images/mobility-and-usability.svg';
+import uiDesign from '../assets/images/rapid-ui-design.svg';
+import synthesizedData from '../assets/images/synthesized-data.svg';
+import rebadge from '../assets/images/rebadge.svg';
+import confetti from '../assets/images/confetti.svg';
+
 export const referrals = [
     {
         type: 'Referral',
@@ -213,5 +228,74 @@ export const logoColumns = [
             image: pulseIcon,
             imageAlt: 'A line that varies up and down inside of a circle with the word PULSE.'
         }
+    }
+]
+
+export const techStackIcons = [
+    {
+        text: 'Figma',
+        icon: figma,
+        theme: 'primary'
+    },
+    {
+        text: 'Adobe Xd',
+        icon: adobeXd,
+        theme: 'primary'
+    },
+    {
+        text: 'UserZoom',
+        icon: userZoom,
+        theme: 'primary'
+    },
+    {
+        text: 'MS Teams',
+        icon: teams,
+        theme: 'primary'
+    },
+    {
+        text: 'Slack',
+        icon: slack,
+        theme: 'primary'
+    },
+    {
+        text: 'WCAG 2.1',
+        icon: wcag,
+        theme: 'primary'
+    },
+    {
+        text: 'Prototyping',
+        icon: prototype,
+        theme: 'primary'
+    },
+    {
+        text: 'Design System',
+        icon: designSystem,
+        theme: 'primary'
+    },
+    {
+        text: 'Moderated Usability Study',
+        icon: usabilityStudy,
+        theme: 'primary'
+    },
+    {
+        text: 'Rapid UI Design',
+        icon: uiDesign,
+        theme: 'primary'
+    },
+    {
+        text: 'Delivery of synthesized data',
+        icon: synthesizedData,
+        theme: 'primary'
+    }
+    ,
+    {
+        text: 'Rebadge for Seaborne',
+        icon: rebadge,
+        theme: 'primary'
+    },
+    {
+        text: 'Project Completion!',
+        icon: confetti,
+        theme: 'project-complete'
     }
 ]

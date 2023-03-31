@@ -1,4 +1,5 @@
 <script>
+    // Components
     import Header from '../../components/header.svelte';
     import Footer from '../../components/footer.svelte';
     import Hero from '../../components/hero.svelte';
@@ -6,37 +7,34 @@
     import ColumnSection from '../../components/columnSection.svelte';
     import FullSection from '../../components/fullSection.svelte';
     import FullMedia from '../../components/fullMedia.svelte';
-    import inView from '../../utlis/helperFunctions';
-    import api from '../../lib/api';
-    import {onMount} from 'svelte';
-    import { error } from '@sveltejs/kit';
-    import { page } from '$app/stores';
+    import { mainNav } from '../../lib/menus';
 
-    const components = {Header, Hero, Carousel, ColumnSection, FullSection, FullMedia}
+
+    // Helper Functions
+    import inView from '../../utlis/helperFunctions';
+
+    // Page Data
+    import { hollandAmerica } from '../../lib/pages';
+
+    /** @type {import('./$types').PageData} */
+    export let data;
 
     let headerVisibility = "visible";
-    let pageData;
-    onMount(async () => {
-        try {
-            const resp = await api("pages", "populate=deep&filters[slug][$eq]=" + $page.params.slug);
-            pageData = resp.data.data[0].attributes;
-        } catch (e) {
-            throw error(404, {
-                message: 'Page Not found'
-            });
-        }
-    });
+    const components = {Header, Hero, Carousel, ColumnSection, FullSection, FullMedia}
+    const pages = {hollandAmerica}
+
+    let pageData = pages[data.page];
 </script>
 
 <div class="app-wrapper">
-    <Header visible={headerVisibility}/>
+    <Header visible={headerVisibility} links={mainNav}/>
     {#if pageData}
         {#each pageData.blocks as block}
             <svelte:component this={components[block.blockType]} data={block}/>
         {/each}
     {/if}
     <div use:inView on:enter={() => { headerVisibility = "hidden"; }} on:exit={() => headerVisibility = "visible"} class="pre-footer"><span></span></div>
-    <Footer />
+    <Footer links={mainNav}/>
 </div>
 
 <style>

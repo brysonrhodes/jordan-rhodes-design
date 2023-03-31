@@ -14,12 +14,10 @@
     import { mainNav } from '../lib/menus';
 
     let headerVisibility = "visible";
-
-
 </script>
 
 <div class="app-wrapper">
-    <Header visible={headerVisibility} links={mainNav}/>
+    <Header visible={headerVisibility} links={mainNav} currentPage=""/>
     <Hero data={landingHeroData}/>
     <ColumnSection data={referralColumnData} />
     <Carousel data={caseStudyCarousel} />

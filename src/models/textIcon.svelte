@@ -3,7 +3,7 @@
 </script>
 
 <div class="text-icon {data.theme}">
-    <img src="{import.meta.env.VITE_URL}{data.icon.data.attributes.url}" alt={data.text} />
+    <img src={data.icon} alt={data.text} />
     <p>{data.text}</p>
 </div>
 

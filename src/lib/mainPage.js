@@ -18,7 +18,8 @@ export const landingHeroData = {
         attributes: {
             href: 'https://calendly.com/jordanrhodes-ux/let-s-talk-about-your-project',
             theme: 'primary',
-            text: 'Schedule a consultation'
+            text: 'Schedule a consultation',
+            isExternal: true
         }
     }
 }
@@ -31,7 +32,8 @@ export const referralColumnData = {
         attributes: {
             href: 'https://www.upwork.com/freelancers/~013684d69371c8c9b6',
             theme: 'primary',
-            text: 'See more reviews on Upwork'
+            text: 'See more reviews on Upwork',
+            isExternal: true
         }
     },
     collectionData: referrals

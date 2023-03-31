@@ -3,6 +3,7 @@
      import Nav from './nav.svelte';
      export let visible;
      export let links;
+     export let currentPage;
 </script>
 
 <header>
@@ -12,7 +13,7 @@
                 <a href="/"><img class="logo" src={Logo} alt="JR"/></a>
             </div>
             <div class="right">
-                <Nav links={links}/>
+                <Nav links={links} currentPage={currentPage} headerNav/>
             </div>
         </div>
     </div>

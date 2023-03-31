@@ -46,8 +46,11 @@
     .background-image {
         z-index: -1;
         width: 835px;
-        left: 0;
         position: absolute;
+    }
+
+    .primary .background-image {
+        left: 0;
     }
 
     .caseStudy {
@@ -56,7 +59,7 @@
 
     .caseStudy .background-image {
         top: -100px;
-        right: 0;
+        right: 0px;
     }
 
     .icon-wrapper {
