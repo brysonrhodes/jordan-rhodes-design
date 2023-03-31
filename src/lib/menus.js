@@ -1,6 +1,6 @@
 export const mainNav = [
     {
-        href: '',
+        href: '/',
         theme: 'primary',
         text: 'Portfolio'
     },

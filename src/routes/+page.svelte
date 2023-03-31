@@ -17,7 +17,7 @@
 </script>
 
 <div class="app-wrapper">
-    <Header visible={headerVisibility} links={mainNav} currentPage=""/>
+    <Header visible={headerVisibility} links={mainNav} currentPage="/"/>
     <Hero data={landingHeroData}/>
     <ColumnSection data={referralColumnData} />
     <Carousel data={caseStudyCarousel} />
