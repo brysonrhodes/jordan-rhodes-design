@@ -4,19 +4,21 @@
     import TextIcon from '../models/textIcon.svelte';
 </script>
 
-<div class="wrapper {data.theme}" id={data.blockId}>
+<div class="wrapper {data.theme} gutter" id={data.blockId}>
     <img class="background-image" src={data.backgroundImage} alt={data.backgroundImageAlt} />
     <div class="content">
         <div class="text">
             {#if data.theme == "primary"}
                 <h1>{data.heading}</h1>
             {:else}
-                <img src={data.logoImage} alt={data.logoImageAlt} />
+                <img id="logo-image" src={data.logoImage} alt={data.logoImageAlt} />
             {/if}
-            <p>{data.text}</p>
-            {#if data.text2} 
-                <p>{data.text2}</p>
-            {/if}
+            <div class="text-inner">
+                <p>{data.text}</p>
+                {#if data.text2} 
+                    <p>{data.text2}</p>
+                {/if}
+            </div>
             {#if data.ctaButton}
                 <Button data={data.ctaButton.attributes}/>
             {/if}
@@ -34,13 +36,12 @@
 
 <style>
     .wrapper {
-        margin-top: 32px;
-        margin-left: 250px;
-        margin-right: 250px;
+        padding-top: 32px;
         position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow-x: hidden;
     }
 
     .background-image {
@@ -94,5 +95,73 @@
 
     p {
         font-size: 36px;
+    }
+
+    @media screen and (max-width: 600px)  {
+        .content {
+            position: relative;
+            flex-direction: column;
+        }
+
+        .wrapper {
+            padding-top: 30px;
+        }
+
+        .background-image {
+            width:  550px;
+            top: 410px;
+            transform:  translateX(-5%);
+        }
+
+        #logo-image {
+            width: 90%;
+        }
+
+        .text {
+            width: 100%;
+        }
+
+        .text-inner {
+            margin-bottom: 325px;
+        }
+
+        h1 {
+            font-size: 32px;
+            line-height: 44.26px;
+            text-align: center;
+        }
+
+        .feature-image {
+            position: absolute;
+            top: 150px;
+            z-index: -1;
+            width: 300px;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 25px;
+            line-height: 37.5px;
+            margin-top: 335px;
+            margin-bottom: 173px;
+        }
+
+        .caseStudy p {
+            margin: 8px;
+            margin-left: 0;
+        }
+
+        .caseStudy .background-image {
+            display: none;
+        }
+
+        .caseStudy .feature-image {
+            margin-top: 30px;
+        }
+
+        .icon-wrapper {
+            flex-wrap: wrap;
+            gap: 63px;
+        }
     }
 </style>

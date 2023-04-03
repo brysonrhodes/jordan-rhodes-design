@@ -1,11 +1,12 @@
 <script>
     import Referral from '../models/referral.svelte';
     import ClientIcon from '../models/clientIcon.svelte';
+    import CaseStudy from '../models/caseStudy.svelte';
     import Button from './button.svelte';
     export let data;
     const collectionData = data.collectionData;
 
-    const models = {Referral, ClientIcon}
+    const models = {Referral, ClientIcon, CaseStudy}
 </script>
 
 <div class="wrapper gutter {data.theme}">
@@ -15,7 +16,7 @@
     <div class="inner">
         {#if collectionData}
             {#each collectionData as item}
-                <svelte:component this={models[item.type]} data={item.attributes} columns={data.numColumns}/>
+                <svelte:component this={models[item.type]} data={item.attributes} />
             {/each}
         {/if}
     </div>
@@ -50,5 +51,15 @@
         gap: 64px;
         text-align: left;
         margin-bottom: 64px;
+    }
+
+    @media screen and (max-width: 600px) {
+        .wrapper {
+            margin-top: 128px;
+        }
+
+        .inner {
+            flex-direction: column;
+        }
     }
 </style>

@@ -1,6 +1,7 @@
 <script>
     // Library imports
     import inView from '../utlis/helperFunctions';
+    import { onMount } from 'svelte'
 
     // Components
     import Header from '../components/header.svelte';
@@ -14,13 +15,28 @@
     import { mainNav } from '../lib/menus';
 
     let headerVisibility = "visible";
+    let windowWidth;
+
+    onMount(async () => {
+        windowWidth = window.innerWidth;
+    })
 </script>
 
 <div class="app-wrapper">
     <Header visible={headerVisibility} links={mainNav} currentPage="/"/>
     <Hero data={landingHeroData}/>
-    <ColumnSection data={referralColumnData} />
-    <Carousel data={caseStudyCarousel} />
+    
+    {#if windowWidth > 500}
+        <ColumnSection data={referralColumnData} />
+    {:else}
+        <Carousel data={referralColumnData} />
+    {/if}
+    {#if windowWidth > 500}
+        <Carousel data={caseStudyCarousel} />
+    {:else}
+        <ColumnSection data={caseStudyCarousel} />
+    {/if}
+    
     <ColumnSection data={logoColumnsData} />
     <div use:inView on:enter={() => { headerVisibility = "hidden"; }} on:exit={() => headerVisibility = "visible"} class="pre-footer"><span></span></div>
     <Footer links={mainNav} />
@@ -58,5 +74,16 @@
         width: 100%;
         height: 1px;
         transform: translateY(1px);
+    }
+
+    @media screen and (max-width: 600px) {
+        :global(.gutter) {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        :global(::-webkit-scrollbar) {
+            display: none;
+        }
     }
 </style>

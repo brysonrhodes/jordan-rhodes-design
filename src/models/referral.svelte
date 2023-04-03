@@ -37,4 +37,14 @@
         font-weight: 400;
         font-size: 20px;
     }
+
+    @media screen and (max-width: 600px) {
+        .wrapper {
+            width: 100%;
+        }
+
+        .inner {
+            width: 350px;
+        }
+    }
 </style>

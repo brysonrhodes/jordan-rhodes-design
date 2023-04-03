@@ -42,4 +42,10 @@
     .left {
         visibility: var(--visible);
     }
+
+    @media screen and (max-width: 600px) {
+        .logo {
+            width: 32px;
+        }
+    }
 </style>

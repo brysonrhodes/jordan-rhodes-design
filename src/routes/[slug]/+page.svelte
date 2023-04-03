@@ -70,4 +70,16 @@
         height: 1px;
         transform: translateY(1px);
     }
+
+
+    @media screen and (max-width: 600px) {
+        :global(.gutter) {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        :global(::-webkit-scrollbar) {
+            display: none;
+        }
+    }
 </style>

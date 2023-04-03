@@ -3,7 +3,7 @@
     export let data;
 </script>
 
-<div class="wrapper">
+<div class="wrapper gutter">
     <div class="image-wrapper">
         <img src={data.image} alt={data.imageAlt} />
     </div>
@@ -48,5 +48,19 @@
         font-weight: 400;
         font-size: 24px;
         line-height: 29px;
+    }
+
+    @media screen and (max-width: 600px) {
+
+        
+        h4 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        img {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
     }
 </style>

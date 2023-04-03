@@ -23,6 +23,9 @@
             {/if}
         </div>
     </div>
+    {#if data.button}
+        <Button data={data.button.attributes} />
+    {/if}
 </div>
 
 <style>

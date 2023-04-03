@@ -46,4 +46,10 @@
         margin-top: 57px;
         font-size: 18px;
     }
+
+    @media screen and (max-width: 600px) {
+        button, .small {
+            width: 100%;
+        }
+    }
 </style>
